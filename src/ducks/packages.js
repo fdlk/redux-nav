@@ -36,9 +36,8 @@ export const receivePackage = (id, json) => {
 
 const fetchPackage = id => dispatch => {
     return get(
-        {apiUrl: "http://localhost:8080/api"},
-        `/v2/sys_md_Package/${id}?attrs=label,description,entityTypes(fullName,label,description),children(fullName,label,description)`,
-        "5c4d1fd6131b4334a6de6cc570261be8")
+        {apiUrl: "http://localhost:3000/api"},
+        `/v2/sys_md_Package/${id}?attrs=label,description,entityTypes(fullName,label,description),children(fullName,label,description)`)
         .then(json => dispatch(receivePackage(id, json)))
 }
 
