@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "react": "^15.3.0",
+    "react-bootstrap": "^0.30.7",
+    "react-bootstrap-table": "^2.9.2",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
@@ -17,5 +19,6 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:8080/"
+  "proxy": "http://localhost:8080/",
+  "repository": "https://github.com/fdlk/redux-nav"
 }
