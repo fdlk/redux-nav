@@ -12,7 +12,6 @@ const Package = ({entityTypes, packages, handleSelectPackage, handleSelectEntity
         return <span><Glyphicon glyph={glyphs[row.type]}/>&nbsp;&nbsp;{row.label}</span>
     }
     const data = [...packages.map(addType('package')), ...entityTypes.map(addType('entity'))];
-    // const options = {onRowClick: onSelect}
     const options = {
         onRowClick: function (row) {
             switch (row.type) {
@@ -31,7 +30,7 @@ const Package = ({entityTypes, packages, handleSelectPackage, handleSelectEntity
     };
     return <BootstrapTable data={data} options={options}>
         <TableHeaderColumn dataField='fullName' isKey={true} dataFormat={nameFormatter}>Name</TableHeaderColumn>
-        <TableHeaderColumn dataField="description">Description</TableHeaderColumn>
+        <TableHeaderColumn dataField="description" columnClassName="hidden-xs">Description</TableHeaderColumn>
     </BootstrapTable>
 }
 
