@@ -8,27 +8,23 @@ const Package = ({entityTypes, packages, handleSelectPackage, handleSelectEntity
         ...item
     })
     const glyphs = {'entity': 'list', 'package': 'folder-open'}
+    const onRowClick = (row) => {
+        switch (row.type) {
+            case 'entity':
+                handleSelectEntityType(row.fullName)
+                break
+            case 'package':
+                handleSelectPackage(row.fullName)
+                break
+            default:
+        }
+    }
     const nameFormatter = (cell, row) => {
-        return <span><Glyphicon glyph={glyphs[row.type]}/>&nbsp;&nbsp;{row.label}</span>
+        return <span onClick={() => onRowClick(row)}><Glyphicon
+            glyph={glyphs[row.type]}/>&nbsp;&nbsp;{row.label}</span>
     }
     const data = [...packages.map(addType('package')), ...entityTypes.map(addType('entity'))];
-    const options = {
-        onRowClick: function (row) {
-            switch (row.type) {
-                case 'entity':
-                    handleSelectEntityType(row.fullName)
-                    break
-                case 'package':
-                    handleSelectPackage(row.fullName)
-                    break
-                default:
-            }
-        },
-        onRowDoubleClick: function (row) {
-            alert(`You double click row id: ${row.fullName}`);
-        }
-    };
-    return <BootstrapTable data={data} options={options}>
+    return <BootstrapTable data={data} options={onRowClick}>
         <TableHeaderColumn dataField='fullName' isKey={true} dataFormat={nameFormatter}>Name</TableHeaderColumn>
         <TableHeaderColumn dataField="description" columnClassName="hidden-xs">Description</TableHeaderColumn>
     </BootstrapTable>
